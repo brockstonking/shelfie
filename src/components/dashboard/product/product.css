@@ -1,4 +1,15 @@
 .productImg{
-    height: 300px;
     width: 300px;
+    margin: 15px;
+}
+
+.productDisplay {
+    margin: 25px;
+    display: flex;
+    background-color: #D34735;
+    width: 500px;
+}
+
+.productInfo {
+    margin-top: 15px;
 }

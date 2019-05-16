@@ -9,11 +9,11 @@ class Product extends Component{
     render(){
         const { name, image, price } = this.props
         return(
-            <div>
+            <div className='productDisplay'>
                 <div>
                     <img className='productImg' src={ image } alt='' />
                 </div>
-                <div>
+                <div className='productInfo'>
                     <div className='productName'>{ name }</div>
                     <div className='productPrice'>${ price }</div>
                 </div>
