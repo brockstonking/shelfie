@@ -20,7 +20,7 @@ class Add extends Component {
 
     render(){
         return(
-            <div>
+            <div className='addProductBox'>
                 <div><img className='imageChecker' src={ this.props.imageCheck } alt='' /></div>
                 <div>
                     <p>Image URL:</p>
