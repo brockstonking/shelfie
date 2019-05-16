@@ -19,20 +19,22 @@ class Add extends Component {
     }
 
     render(){
+        let image_urlVal = this.props.UrlVal === 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg' ? '' : this.props.UrlVal
         return(
             <div className='addProductBox'>
                 <div><img className='imageChecker' src={ this.props.imageCheck } alt='' /></div>
                 <div>
                     <p>Image URL:</p>
-                    <input value={ this.props.UrlVal } onChange={ e => this.handleURL(e.target.value) }></input>
+                    <input value={ image_urlVal } onChange={ e => this.handleURL(e.target.value) }></input>
                     <p>Product Name</p>
                     <input value={ this.props.nameVal } onChange={ e => this.handleName(e.target.value) }></input>
                     <p>Price:</p>
                     <input value={this.props.priceVal } onChange={ e => this.handlePrice(e.target.value)}></input>
                 </div>
-                <div>
-                    <button onClick={ this.props.reset } >Cancel</button>
-                    <button>Add to Inventory</button>
+                <div className='addCancelButtonDiv'>
+                    <div><button className='button' onClick={ this.props.reset } >Cancel</button></div>
+                    <div><button className='button' onClick={ this.props.handleAdd }>Add to Inventory</button></div>
+                    
                 </div>
 
             </div>

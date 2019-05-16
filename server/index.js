@@ -3,13 +3,16 @@ const express = require('express');
 const massive = require('massive')
 const axios = require('axios');
 const controller = require('./controller');
+const bodyParser = require('body-parser'); 
+const cors = require('cors');
+
 
 const app = express();
 
 const { PORT, CONNECTION_STRING } = process.env;
 
-app.use(express.json());
-
+app.use(cors());
+app.use(bodyParser.json());
 
 
 massive(CONNECTION_STRING)
@@ -20,6 +23,7 @@ massive(CONNECTION_STRING)
 
 
 app.get('/api/inventory', controller.read)
+app.post('/api/inventory', controller.create)
 
 
 

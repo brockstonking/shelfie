@@ -2,9 +2,21 @@
     background-color: #3AD886;
     padding: 25px;
     margin-top: 150px;
-    width: 200px;
+    width: 400px;
 }
 
 img.imageChecker {
     width: 90%;
+}
+
+.button{
+    background-color: #ED6B5A;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addCancelButtonDiv {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
 }
