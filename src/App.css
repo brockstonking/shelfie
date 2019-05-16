@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+.headerBar {
+  background-color: #AB2A19;
+  color: white;
+  font-size: 30px;
+  height: 65px;
+}
+
+.pageName {
+  float: left;
+  margin: 14px;
+  display: flex;
+}
+
+.pageLogo {
+  height: 40px;
+  margin-right: 10px;
+}

@@ -1,4 +1,13 @@
 .mainDiv {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.dashboardDiv{
+    margin-left: -200px;
+    margin-right: 200px;
+}
+
+.addBoxDiv{
+    margin-right: 200px;
 }
