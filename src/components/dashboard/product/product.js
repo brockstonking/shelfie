@@ -4,6 +4,12 @@ import './product.css';
 class Product extends Component{
     constructor(props){
         super(props);
+
+        this.handleDeleteClick = this.handleDeleteClick.bind( this )
+    }
+
+    handleDeleteClick(){
+        this.props.deleteButton(this.props.product_id)
     }
 
     render(){
@@ -13,10 +19,17 @@ class Product extends Component{
                 <div>
                     <img className='productImg' src={ image } alt='' />
                 </div>
-                <div className='productInfo'>
-                    <div className='productName'>{ name }</div>
-                    <div className='productPrice'>${ price }</div>
+                <div>
+                    <div className='productInfo'>
+                        <div className='productName'>{ name }</div>
+                        <div className='productPrice'>${ price }</div>
+                    </div>
+                    <div>
+                        <div><button onClick={ this.handleDeleteClick }>Delete</button></div>
+                        <div><button>Edit</button></div>
+                    </div>
                 </div>
+                
             </div>
         )
     }

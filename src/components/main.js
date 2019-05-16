@@ -11,7 +11,7 @@ class Main extends Component {
         this.state = {
             pPrice: 0,
             pName: '',
-            pImgUrl: '',
+            pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
             imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
             inventoryList: []
         }
@@ -22,6 +22,7 @@ class Main extends Component {
         this.reset = this.reset.bind( this )
         this.componentDidMount = this.componentDidMount.bind( this )
         this.handleAdd = this.handleAdd.bind( this )
+        this.handleDelete = this.handleDelete.bind( this )
     }
 
     componentDidMount(){
@@ -37,15 +38,27 @@ class Main extends Component {
         if (!this.state.pName) {
             window.alert('Please add a product name.')
         } else {
-            axios.post('/api/inventory', {name: this.state.pName, price: this.state.pPrice, image_url: this.state.image_url})
+            axios.post('/api/inventory', {name: this.state.pName, price: this.state.pPrice, image_url: this.state.pImgUrl})
         .then( results => {
             this.setState({
-                inventoryList: results.data
+                inventoryList: results.data,
+                pPrice: 0,
+                pName: '',
+                pImgUrl: ''
             })
             console.log(results.data)
         })
         }
         
+    }
+
+    handleDelete(product_id){
+        axios.delete(`/api/inventory/${ product_id }`)
+        .then( results => {
+            this.setState({
+                inventoryList: results.data
+            })
+        })
     }
 
     updatePrice(val){
@@ -80,7 +93,7 @@ class Main extends Component {
         return(
             <div className='mainDiv'>
                 <div className='dashboardDiv'>
-                    <Dashboard inventory={ this.state.inventoryList } />
+                    <Dashboard delete={ this.handleDelete } inventory={ this.state.inventoryList } />
                 </div>
                 <div className='addBoxDiv'>
                     <div className='addBox'>

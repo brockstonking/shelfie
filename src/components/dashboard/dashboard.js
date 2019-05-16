@@ -9,11 +9,16 @@ class Dashboard extends Component{
         this.state = {
             inventory: this.props.inventory
         }
+        this.delete = this.delete.bind( this )
+    }
+
+    delete(val){
+        this.props.delete(val)
     }
 
     render(){
         const products = this.props.inventory.map( (e, i) => {
-            return <Product key={ i } image={ e.image_url } price={ e.price } name={ e.name }/>
+            return <Product key={ i } deleteButton={ this.delete } image={ e.image_url } price={ e.price } name={ e.name } product_id={ e.product_id }/>
         })
         return(
             <div>

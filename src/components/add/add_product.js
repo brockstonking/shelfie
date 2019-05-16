@@ -22,7 +22,7 @@ class Add extends Component {
         let image_urlVal = this.props.UrlVal === 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg' ? '' : this.props.UrlVal
         return(
             <div className='addProductBox'>
-                <div><img className='imageChecker' src={ this.props.imageCheck } alt='' /></div>
+                <div><img className='imageChecker' src={ this.props.UrlVal } alt='' /></div>
                 <div>
                     <p>Image URL:</p>
                     <input value={ image_urlVal } onChange={ e => this.handleURL(e.target.value) }></input>

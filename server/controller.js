@@ -33,5 +33,28 @@ module.exports = {
             console.log(err);
             res.status(500).send('Sorry! It looks like something went wrong.')
         })
+    },
+
+    delete: (req, res, next) => {
+
+        const dbInstance = req.app.get('db');
+        const { id } = req.params;
+
+        dbInstance.delete_product([id])
+        .then( () => {
+            dbInstance.get_inventory()
+            .then( products => {
+                res.status(200).send(products)
+            })
+            .catch( err => {
+                console.log(err);
+                res.status(500).send('Sorry! It looks like something went wrong.')
+            })
+        })
+        .catch( err => {
+            console.log(err);
+            res.status(500).send('Sorry! It looks like something went wrong.')
+        })
+
     }
 }
