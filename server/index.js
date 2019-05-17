@@ -23,6 +23,7 @@ massive(CONNECTION_STRING)
 
 
 app.get('/api/inventory', controller.read)
+app.get('/api/inventory/:id', controller.getOne)
 app.post('/api/inventory', controller.create)
 app.delete('/api/inventory/:id', controller.delete)
 app.put('/api/inventory/:id', controller.edit)

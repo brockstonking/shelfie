@@ -49,3 +49,30 @@
   height: 40px;
   margin-right: 10px;
 }
+
+.imgAndName {
+  display: flex;
+}
+
+.logoAndRoutes {
+  display: flex;
+}
+
+.routerLinks {
+  display: flex;
+}
+
+.routerLinks {
+  display: flex;
+  margin-left: 50px;
+  width: 200px;
+  justify-content: space-between;
+  margin-top: -8px;
+}
+
+.router {
+  background-color: #ED6B5A;
+  border-radius: 5px;
+  height: 35px;
+  cursor: pointer;
+}

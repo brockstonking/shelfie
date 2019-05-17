@@ -4,12 +4,39 @@
 }
 
 .productDisplay {
-    margin: 25px;
+    margin: auto;
     display: flex;
     background-color: #D34735;
     width: 500px;
+    position: relative;
+    margin-top: 50px;
+    
 }
 
 .productInfo {
     margin-top: 15px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 155px;
+}
+
+.editDeleteButton {
+    background-color: #3AD886;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.infoAndEditDelete {
+    width: 165px;
+    margin-right: 15px;
+    height: 100%;
+}
+
+.bottomer {
+    position: absolute;
+    bottom: 18px;
+    right: 15px;
 }

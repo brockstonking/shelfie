@@ -47,8 +47,8 @@ class Main extends Component {
             this.setState({
                 inventoryList: results.data,
                 pPrice: 0,
-                pName: '',
-                pImgUrl: ''
+                pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
+                imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
             })
             console.log(results.data)
         })
@@ -121,6 +121,7 @@ class Main extends Component {
 
         return(
             <div className='mainDiv'>
+            
                 <div className='dashboardDiv'>
                     <Dashboard edit={ this.handleEdit } delete={ this.handleDelete } inventory={ this.state.inventoryList } />
                 </div>

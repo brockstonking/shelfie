@@ -78,5 +78,19 @@ module.exports = {
             res.status(500).send('Sorry! It looks like something went wrong.')
         })
 
+    },
+    getOne: (req, res, next) => {
+        
+        const dbInstance = req.app.get('db');
+        const { id } = req.params;
+
+        dbInstance.get_one_product([id])
+        .then( product => {
+            res.status(200).send(product)
+        })
+        .catch( err => {
+            console.log(err);
+            res.status(500).send('Sorry! It looks like something went wrong.')
+        })
     }
 }
