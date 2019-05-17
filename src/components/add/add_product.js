@@ -67,6 +67,7 @@ class Add extends Component {
             pName: '',
             pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
         })
+        this.props.history.push('/')
     }
 
     handleAdd(){
@@ -91,12 +92,13 @@ class Add extends Component {
         axios.put(`/api/inventory/${ id }`, {name: this.state.pName, price: this.state.pPrice, image_url: this.state.pImgUrl})
         .then( results => {
             console.log(results.data)
+            this.reset()
+            this.props.history.push('/')
         })
         .catch( err => {
             console.log(err)
         })
-        this.reset()
-        this.props.history.push('/')
+        
     }
 
     render(){
