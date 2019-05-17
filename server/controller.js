@@ -56,5 +56,27 @@ module.exports = {
             res.status(500).send('Sorry! It looks like something went wrong.')
         })
 
+    },
+    edit: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+        const { id } = req.params;
+        const { name, price, image_url } = req.body;
+
+        dbInstance.edit_product([name, price, image_url, id])
+        .then( () => {
+            dbInstance.get_inventory()
+            .then( products => {
+                res.status(200).send(products)
+            })
+            .catch( err => {
+                console.log(err);
+                res.status(500).send('Sorry! It looks like something went wrong.')
+            })
+        })
+        .catch( err => {
+            console.log(err);
+            res.status(500).send('Sorry! It looks like something went wrong.')
+        })
+
     }
 }

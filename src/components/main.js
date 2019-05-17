@@ -13,7 +13,9 @@ class Main extends Component {
             pName: '',
             pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
             imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
-            inventoryList: []
+            inventoryList: [],
+            display: 'add',
+            editId: null
         }
 
         this.updatePrice = this.updatePrice.bind( this )
@@ -23,6 +25,8 @@ class Main extends Component {
         this.componentDidMount = this.componentDidMount.bind( this )
         this.handleAdd = this.handleAdd.bind( this )
         this.handleDelete = this.handleDelete.bind( this )
+        this.handleEdit = this.handleEdit.bind( this )
+        this.handleSave = this.handleSave.bind( this )
     }
 
     componentDidMount(){
@@ -61,6 +65,29 @@ class Main extends Component {
         })
     }
 
+    handleEdit(obj){
+        this.setState({
+            pName: obj.name,
+            pPrice: obj.price,
+            pImgUrl: obj.url,
+            editId: obj.product_id,
+            display: 'edit'
+        })
+    }
+
+    handleSave(id){
+        axios.put(`/api/inventory/${ id }`, {name: this.state.pName, price: this.state.pPrice, image_url: this.state.pImgUrl})
+        .then( results => {
+            this.setState({
+                inventoryList: results.data
+            })
+        })
+        .catch( err => {
+            console.log(err)
+        })
+        this.reset()
+    }
+
     updatePrice(val){
         this.setState({
             pPrice: val
@@ -84,20 +111,22 @@ class Main extends Component {
             pPrice: 0,
             pName: '',
             pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
-            imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg'
+            imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
+            display: 'add'
         })
     }
 
 
     render(){
+
         return(
             <div className='mainDiv'>
                 <div className='dashboardDiv'>
-                    <Dashboard delete={ this.handleDelete } inventory={ this.state.inventoryList } />
+                    <Dashboard edit={ this.handleEdit } delete={ this.handleDelete } inventory={ this.state.inventoryList } />
                 </div>
                 <div className='addBoxDiv'>
                     <div className='addBox'>
-                    <Add reset={this.reset} handleAdd={ this.handleAdd } nameVal={ this.state.pName } priceVal={ this.state.pPrice } UrlVal={ this.state.pImgUrl } imageCheck={ this.state.imageCheck } updatePrice={this.updatePrice} updateName={this.updateName} updateImgUrl={this.updateImgUrl} />
+                    <Add save={ this.handleSave } editId={ this.state.editId } addOrEdit={ this.state.display } reset={this.reset} handleAdd={ this.handleAdd } nameVal={ this.state.pName } priceVal={ this.state.pPrice } UrlVal={ this.state.pImgUrl } imageCheck={ this.state.imageCheck } updatePrice={this.updatePrice} updateName={this.updateName} updateImgUrl={this.updateImgUrl} />
 
                     </div>
                 </div>

@@ -19,6 +19,9 @@ class Add extends Component {
     }
 
     render(){
+        let button = this.props.addOrEdit === 'add' 
+        ? <button className='button' onClick={ this.props.handleAdd }>Add to Inventory</button> 
+        : <button className='button' onClick={ () => this.props.save(this.props.editId) }>Save Changes</button>
         let image_urlVal = this.props.UrlVal === 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg' ? '' : this.props.UrlVal
         return(
             <div className='addProductBox'>
@@ -33,7 +36,7 @@ class Add extends Component {
                 </div>
                 <div className='addCancelButtonDiv'>
                     <div><button className='button' onClick={ this.props.reset } >Cancel</button></div>
-                    <div><button className='button' onClick={ this.props.handleAdd }>Add to Inventory</button></div>
+                    <div>{ button }</div>
                     
                 </div>
 

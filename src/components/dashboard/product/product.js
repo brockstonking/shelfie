@@ -6,10 +6,20 @@ class Product extends Component{
         super(props);
 
         this.handleDeleteClick = this.handleDeleteClick.bind( this )
+        this.handleEditClick = this.handleEditClick.bind( this )
     }
 
     handleDeleteClick(){
         this.props.deleteButton(this.props.product_id)
+    }
+
+    handleEditClick(){
+        this.props.editButton({
+            product_id: this.props.product_id,
+            name: this.props.name,
+            price: this.props.price,
+            url: this.props.image
+        })
     }
 
     render(){
@@ -26,7 +36,7 @@ class Product extends Component{
                     </div>
                     <div>
                         <div><button onClick={ this.handleDeleteClick }>Delete</button></div>
-                        <div><button>Edit</button></div>
+                        <div><button onClick={ this.handleEditClick }>Edit</button></div>
                     </div>
                 </div>
                 
