@@ -24,12 +24,15 @@ class Dashboard extends Component{
     }
 
     delete(product_id){
-        axios.delete(`/api/inventory/${ product_id }`)
-        .then( results => {
+        if (window.confirm('Are you sure you want to delete this item? This action cannot be undone.')){
+            axios.delete(`/api/inventory/${ product_id }`)
+            .then( results => {
             this.setState({
                 inventory: results.data
             })
         })
+        } 
+        
     }
 
     render(){
