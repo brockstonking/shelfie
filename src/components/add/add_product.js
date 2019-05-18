@@ -81,9 +81,9 @@ class Add extends Component {
                 pImgUrl: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
                 imageCheck: 'https://www.lauriloewenberg.com/wp-content/uploads/2019/04/No_Image_Available.jpg',
             })
-            console.log(results.data)
+            this.props.history.push('/')
         })
-        this.props.history.push('/')
+        
         }
         
     }
