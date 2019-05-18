@@ -37,6 +37,10 @@
   color: white;
   font-size: 30px;
   height: 65px;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 2;
 }
 
 .pageName {

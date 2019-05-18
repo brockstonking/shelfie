@@ -22,6 +22,7 @@ module.exports = {
         .then( () => {
             dbInstance.get_inventory()
             .then( products => {
+                
                 res.status(200).send(products)
             })
             .catch( err => {

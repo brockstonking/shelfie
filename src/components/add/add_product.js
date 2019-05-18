@@ -92,13 +92,12 @@ class Add extends Component {
         axios.put(`/api/inventory/${ id }`, {name: this.state.pName, price: this.state.pPrice, image_url: this.state.pImgUrl})
         .then( results => {
             console.log(results.data)
-            this.reset()
-            this.props.history.push('/')
         })
         .catch( err => {
             console.log(err)
         })
-        
+        this.reset()
+        this.props.history.push('/')
     }
 
     render(){

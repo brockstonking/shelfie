@@ -10,6 +10,7 @@
     width: 500px;
     position: relative;
     margin-top: 50px;
+    margin-bottom: 50px;
     
 }
 
@@ -27,6 +28,7 @@
     background-color: #3AD886;
     border-radius: 5px;
     height: 30px;
+    cursor: pointer;
 }
 
 .infoAndEditDelete {
